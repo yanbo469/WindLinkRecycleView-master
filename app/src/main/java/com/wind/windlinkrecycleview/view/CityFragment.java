@@ -43,7 +43,7 @@ public class CityFragment extends Fragment implements CityContract.View, CheckLi
     private CheckListener checkListener;
     private LinearLayoutManager manager;
     private List<Province> presenters;
-
+    public boolean isLoading = false;
     @Override
     public void onResume() {
         super.onResume();
@@ -301,9 +301,13 @@ public class CityFragment extends Fragment implements CityContract.View, CheckLi
             final int enditem=manager.findLastVisibleItemPosition();
             final CityBean cityBeans = list.get(enditem);
             final int positions = Integer.valueOf(cityBeans.getTag());
+            if (isLoading){
+                return;
+            }
             if (presenters.get(positions).isAll()) {
                 if (citylist.size() > 0) {
                     if (cityBeans.getCity().equals(citylist.get(positions).getMane().get(citylist.get(positions).getMane().size() - 2))) {
+                                  isLoading=true;//延迟操作结束后 false；
 
                                 presenters.get(positions).setAll(false);
                                 List<CityBean> lists=new ArrayList<>();
