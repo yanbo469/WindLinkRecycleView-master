@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity implements CheckListener {
 
     private void initData() {
         String[] province = getResources().getStringArray(R.array.province);//获取省份
-       list = new ArrayList<>();
-        for (int i = 0; i <province.length ; i++) {
-            Province province1=new Province();
+        list = new ArrayList<>();
+        for (int i = 0; i < province.length; i++) {
+            Province province1 = new Province();
             province1.setAll(true);
             province1.setName(province[i]);
             list.add(province1);
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements CheckListener {
         for (int i = 0; i < position; i++)//position 为点击的position
         {
             Log.i("<<<<<<", i + ":" + cityFragment.citylist.get(i).getMane().size());
-            counts += cityFragment.citylist.get(i).getMane().size()+1;//计算需要滑动的城市数目
+            counts += cityFragment.citylist.get(i).getMane().size() + 1;//计算需要滑动的城市数目
         }
         if (isLeft) {
             cityFragment.setCounts(counts + position);//加上title（省份）数目

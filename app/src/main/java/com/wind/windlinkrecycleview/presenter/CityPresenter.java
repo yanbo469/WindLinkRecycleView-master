@@ -8,9 +8,9 @@ import com.wind.windlinkrecycleview.CityContract;
 
 public class CityPresenter implements CityContract.Presenter {
     private CityContract.View cityView;
-    public CityPresenter(CityContract.View cityview)
-    {
-        this.cityView=cityview;
+
+    public CityPresenter(CityContract.View cityview) {
+        this.cityView = cityview;
         cityView.setPresenter(this);
     }
 

@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-
 import com.wind.windlinkrecycleview.model.CityBean;
 
 import java.util.List;
@@ -41,7 +40,7 @@ public class ItemHeaderDecoration extends RecyclerView.ItemDecoration {
 
     public ItemHeaderDecoration(Context context, List<CityBean> datas) {
         super();
-        this.context=context;
+        this.context = context;
         this.mDatas = datas;
         Paint paint = new Paint();
         mTitleHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, context.getResources().getDisplayMetrics());
@@ -76,7 +75,7 @@ public class ItemHeaderDecoration extends RecyclerView.ItemDecoration {
     public void onDrawOver(Canvas c, final RecyclerView parent, RecyclerView.State state) {
         int pos = ((LinearLayoutManager) (parent.getLayoutManager())).findFirstVisibleItemPosition();
         String tag = mDatas.get(pos).getTag();
-        Log.i("zhangcong",tag);
+        Log.i("zhangcong", tag);
         View child = parent.findViewHolderForLayoutPosition(pos).itemView;
         boolean flag = false;
         if ((pos + 1) < mDatas.size()) {
@@ -92,7 +91,7 @@ public class ItemHeaderDecoration extends RecyclerView.ItemDecoration {
 
         View topTitleView = mInflater.inflate(R.layout.item_title, parent, false);
         TextView tvTitle = (TextView) topTitleView.findViewById(R.id.tv_title);
-        String [] province =context.getResources().getStringArray(R.array.province);
+        String[] province = context.getResources().getStringArray(R.array.province);
         tvTitle.setText(province[Integer.parseInt(tag)]);
         int toDrawWidthSpec;//用于测量的widthMeasureSpec
         int toDrawHeightSpec;//用于测量的heightMeasureSpec
@@ -131,7 +130,7 @@ public class ItemHeaderDecoration extends RecyclerView.ItemDecoration {
          */
         if (!TextUtils.equals(tag, currentTag)) {
             currentTag = tag;
-            Log.i("zhangcong",currentTag);
+            Log.i("zhangcong", currentTag);
             Integer integer = Integer.valueOf(currentTag);
             mCheckListener.check(integer, false);
         }

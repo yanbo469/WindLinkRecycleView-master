@@ -44,6 +44,7 @@ public class CityFragment extends Fragment implements CityContract.View, CheckLi
     private LinearLayoutManager manager;
     private List<Province> presenters;
     public boolean isLoading = false;
+
     @Override
     public void onResume() {
         super.onResume();
@@ -108,16 +109,16 @@ public class CityFragment extends Fragment implements CityContract.View, CheckLi
                         break;
                     case R.id.ll_city_j:
 
-                        List<CityBean> lists=new ArrayList<>();
+                        List<CityBean> lists = new ArrayList<>();
                         for (int j = 0; j < 5; j++) {
                             CityBean cityBean = new CityBean();
-                            cityBean.setCity("点击加载的数据"+j);
+                            cityBean.setCity("点击加载的数据" + j);
                             cityBean.setTitle(1);//设置为title
                             cityBean.setTag(list.get(position).getTag());//设置成和省份一样的tag，将省份与城市绑定。
-                            citylist.get(Integer.valueOf(list.get(position).getTag())).getMane().add("深圳"+j);
+                            citylist.get(Integer.valueOf(list.get(position).getTag())).getMane().add("深圳" + j);
                             lists.add(cityBean);
                         }
-                        list.addAll(position,lists);
+                        list.addAll(position, lists);
                         notifyAdapter();
                         break;
                 }
@@ -298,29 +299,30 @@ public class CityFragment extends Fragment implements CityContract.View, CheckLi
                     recyclerView.scrollBy(0, top);
                 }
             }
-            final int enditem=manager.findLastVisibleItemPosition();
+
+            final int enditem = manager.findLastVisibleItemPosition();
             final CityBean cityBeans = list.get(enditem);
             final int positions = Integer.valueOf(cityBeans.getTag());
-            if (isLoading){
+            if (isLoading) {
                 return;
             }
             if (presenters.get(positions).isAll()) {
                 if (citylist.size() > 0) {
                     if (cityBeans.getCity().equals(citylist.get(positions).getMane().get(citylist.get(positions).getMane().size() - 2))) {
-                                  isLoading=true;//延迟操作结束后 false；
+                        isLoading = true;//延迟操作结束后 false；
 
-                                presenters.get(positions).setAll(false);
-                                List<CityBean> lists=new ArrayList<>();
-                                for (int j = 0; j < 5; j++) {
-                                    CityBean cityBean = new CityBean();
-                                    cityBean.setCity("深圳"+j);
-                                    cityBean.setTitle(1);//设置为title
-                                    cityBean.setTag(cityBeans.getTag());//设置成和省份一样的tag，将省份与城市绑定。
-                                    citylist.get(positions).getMane().add("深圳"+j);
-                                    lists.add(cityBean);
-                                }
-                                list.addAll(enditem+2,lists);
-                                notifyAdapter();
+                        presenters.get(positions).setAll(false);
+                        List<CityBean> lists = new ArrayList<>();
+                        for (int j = 0; j < 5; j++) {
+                            CityBean cityBean = new CityBean();
+                            cityBean.setCity("深圳" + j);
+                            cityBean.setTitle(1);//设置为title
+                            cityBean.setTag(cityBeans.getTag());//设置成和省份一样的tag，将省份与城市绑定。
+                            citylist.get(positions).getMane().add("深圳" + j);
+                            lists.add(cityBean);
+                        }
+                        list.addAll(enditem + 2, lists);
+                        notifyAdapter();
 
                     }
                 }

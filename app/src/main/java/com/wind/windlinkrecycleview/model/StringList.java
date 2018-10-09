@@ -9,7 +9,7 @@ import java.util.List;
  * @date 18/9/28
  */
 public class StringList {
-   List <String> mane;
+    List<String> mane;
 
     public List<String> getMane() {
         return mane;

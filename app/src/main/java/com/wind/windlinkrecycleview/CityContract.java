@@ -5,12 +5,14 @@ package com.wind.windlinkrecycleview;
  */
 
 public interface CityContract {
-    interface View
-    {
+    interface View {
         void setPresenter(Presenter presenter);
+
         void showSnackBar();
+
         void showCity();
     }
+
     interface Presenter {
         void start();
     }

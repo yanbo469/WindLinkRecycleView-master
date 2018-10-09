@@ -5,5 +5,5 @@ package com.wind.windlinkrecycleview;
  */
 
 public interface CheckListener {
-    void check(int position,boolean isScroll);
+    void check(int position, boolean isScroll);
 }
