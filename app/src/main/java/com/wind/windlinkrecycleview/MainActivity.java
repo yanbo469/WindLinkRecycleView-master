@@ -18,6 +18,8 @@ import com.wind.windlinkrecycleview.view.CityFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import ejiancai.baseutils.NetUtils;
+
 public class MainActivity extends AppCompatActivity implements CheckListener {
     private RecyclerView recycleview;
     public ProvinceRvAdapter adapter;
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements CheckListener {
         });
         recycleview.setAdapter(adapter);
         addRightData();
-
+        NetUtils.doWithCheckNet();
     }
 
     //将当前选中的item居中
